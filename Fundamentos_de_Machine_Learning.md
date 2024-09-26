@@ -40,17 +40,42 @@ Geralmente as estruturas dos dados em que os modelos irão trabalhar serão dado
 
 Tarefas mais importantes: 
 
-- **Classificação**: A classificação seria a descrição ou previsão relacionado a um atributo especial chamado **classe**, ou seja, prever os motivos de uma fraude, uma doença a raça de um animal. - Dados categóricos.
+- **Classificação**: A classificação é uma técnica usada para prever ou descrever uma classe categórica (também chamada de rótulo). Isso significa que, dado um conjunto de características ou atributos (variáveis preditoras), o objetivo é prever a qual categoria (classe) a nova observação pertence.
+    - **Exemplo**: Prever se um e-mail é spam ou não spam, diagnosticar uma doença, ou identificar a raça de um animal com base em suas características.
+    - Os dados aqui são categóricos, ou seja, pertencem a categorias discretas (por exemplo, "fraude" ou "não fraude").
 
-- **Regressão**: Utilizado para prever ou descrever um atributo **classe** porém numérico.
+- **Regressão**: A regressão é usada para prever ou descrever um atributo numérico. Nesse caso, o objetivo é prever um valor contínuo com base em variáveis preditoras.
+    - Exemplo: Prever o preço de uma casa com base em características como área, número de quartos, localização, etc.
+    - Os dados de saída (classe) aqui são numéricos (por exemplo, o valor de uma casa).
 
-- **Agrupamento**: O objetivo é agrupar os dados a partir de características comuns ou com semelhanças matemáticas que são definidas a partir do algoritmo utilizado. Nova espécie, decisão pelo grupo...
-(Um segmento seria basicamente um conjunto de atributos com a mesma fundamentação matemática).
 
-- **Regra de Associação**: Seria basicamente a partir de um dado prever qual outro dado seria o mais provável de estar agrupado junto ao primeira a partir de determinada ação, seja compra, estragar, etc...
+- **Agrupamento**: O agrupamento é uma técnica que busca identificar grupos (ou clusters) de dados que compartilham características semelhantes. Ao contrário da classificação, o agrupamento não utiliza rótulos previamente conhecidos. O algoritmo tenta agrupar os dados com base em suas similaridades.
+    - Exemplo: Agrupar clientes com comportamento de compra semelhante em um e-commerce para criar segmentos de marketing.
+    - O objetivo é encontrar padrões e agrupamentos naturais nos dados, como novas espécies de animais ou diferentes grupos de consumidores.
+
+- **Regra de Associação**: As regras de associação buscam descobrir padrões e relações entre os itens de um conjunto de dados, onde a presença de certos itens pode sugerir a ocorrência de outros.
+    - Exemplo: No caso de um supermercado, se um cliente compra leite, também é provável que ele compre pão. As regras de associação são usadas em recomendações de produtos, cestas de compras, etc.
+    - Essa técnica ajuda a prever quais itens ou ações tendem a ocorrer juntos com base em dados históricos.
 
 - **Diferenças de técnicas**: 
-    - Supervisionada: Possui uma referência que obviamente irá avaliar a performance do modelo em questão. Seria o supervisionado.
+    - **Aprendizado Supervisionado**: No aprendizado supervisionado, o algoritmo é treinado em um conjunto de dados que possui rótulos conhecidos. O objetivo é fazer com que o modelo aprenda a mapear as variáveis preditoras para o rótulo (classe) correto.
+        - Exemplo: Um modelo que prevê se uma transação é fraude ou não, onde já existem transações rotuladas como fraude ou não-fraude para treinamento.
+        - Avaliamos a performance do modelo comparando as previsões com os rótulos reais.
 
-    - Não supervisionado: Por exemplo, não tem valores de embasamento para o treinamento de modelos.
+    - **Aprendizado Não Supervisionado**: No aprendizado não supervisionado, o algoritmo não tem rótulos pré-definidos. O objetivo é descobrir padrões nos dados sem uma classe ou valor alvo.
+        - Exemplo: Um algoritmo de agrupamento (clustering) que organiza os dados em grupos com características semelhantes, sem ter rótulos pré-definidos para os grupos.
+        - Não há uma base de comparação direta para avaliar o desempenho, já que os rótulos não existem.
 
+
+## Técnicas:
+
+### Classificação: 
+A classificação é usada para prever ou descrever um rótulo baseado em dados categóricos. O algoritmo utiliza um atributo especial como a classe (o alvo a ser previsto). As classes são discretas, e o objetivo do modelo é atribuir novos dados a uma das classes.
+
+Exemplo: Prever se um cliente irá comprar ou não um produto com base em seu histórico de compras.
+
+Um exemplo utilizando a técnica de classificação, seria esse abaixo com um modelo simples, para classificar a probabilidade de um email ser ou não ser spam:
+
+![Classificação Spam](./assets/Modelo-Classificação-Spam.png)
+
+Como nós medimos o desempenho do modelo? Os modelos necessitam de métricas para medições pois são desenvolvidos por diferentes parametrizações e diferentes técnicas de algoritmos, naturalmente algum mais eficaz que outros para determinados contextos.
