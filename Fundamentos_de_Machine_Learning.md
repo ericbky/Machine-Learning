@@ -10,5 +10,16 @@ O aprendizado deve ter evolução e deve ser mensurado através de métricas, pa
 
 Para o treinamento há uma fonte de dados e básicamente através da relação desses dados ocorrerá um processamento/algoritmo que através dele é possível obter resultados de deciões e essas decisões formam um modelo, como você pode ver abaixo.
 
+CVocê quer prever em quais dias poderá jogar vôlei. Os dados de entrada podem conter informações como **clima**, **temperatura**, **umidade** e **vento**. O algoritmo processa esses dados e gera um modelo (como uma árvore de decisão). Esse modelo é capaz de fazer previsões para novos dias com base nos dados que ele já viu durante o treinamento.
+
 ![Dados de Aprendizado](./assets/Fluxo-modelo.png)
+
+O resultado do aprendizado é uma árvore de decisão, que seria o modelo.
+
+Assim, vamos supor que surja um novo dia:
+
+|Ensolarado|quente|alta|FALSO|
+|----------|------|----|-----|
+
+Como vou saber se poderei jogar? O modelo, ao receber esses novos dados, percorre a árvore de decisão para verificar as condições e, com base nas regras que ele aprendeu, irá decidir se você poderá jogar ou não.
 
