@@ -111,5 +111,14 @@ Causas do super ajuste:
     - Falta da validação cruzada (divisão dos dados).
     Na imagem abaixo, a linha preta demonstra um exemplo de **generalização**, onde o modelo tem um desempenho consistente tanto nos dados de treino quanto nos dados de produção. Já a linha verde ilustra um exemplo de **super ajuste (overfitting)**, onde o modelo se ajusta muito bem aos dados de treino, mas não consegue manter a mesma performance com novos dados.
 
-![Super Ajuste exemplo](./assets/super-ajuste.png)
+![Super Ajuste, exemplo](./assets/super-ajuste.png)
+
+- **Sub Ajuste (Underfitting)**: O sub ajuste acontece quando um modelo tem dificuldade em captar os padrões dos dados, tanto durante o treinamento quanto na aplicação em novos dados. Isso significa que o modelo é incapaz de aprender adequadamente, resultando em um desempenho ruim tanto nos dados de treino quanto nos dados de teste. O sub ajuste ocorre quando o modelo não é complexo o suficiente para capturar as relações subjacentes nos dados.
+Causas do sub ajuste:
+    - Modelo muito simples: Um modelo simples pode não ter a capacidade de capturar padrões complexos presentes nos dados. Por exemplo, utilizar uma regressão linear para dados que exigem uma curva mais complexa resultaria em sub ajuste.
+    - Conjunto de dados muito pequeno: Com um conjunto de dados pequeno, o modelo não consegue observar uma amostra ampla o suficiente dos padrões. Isso faz com que ele tenha dificuldade em aprender adequadamente, já que não tem exemplos suficientes para captar a complexidade dos dados.
+    - Seleção inadequada de atributos: Se os atributos (features) escolhidos para o modelo não forem relevantes ou não capturarem as informações essenciais dos dados, o modelo terá dificuldade em fazer previsões precisas. A seleção de atributos é crucial para o desempenho do modelo.
+    - Falta de ajuste de hiperparâmetros: Os hiperparâmetros são configurações que controlam como o modelo aprende. A escolha inadequada de hiperparâmetros (por exemplo, taxa de aprendizado muito alta ou baixa, profundidade da árvore de decisão muito rasa, etc.) pode fazer com que o modelo não seja capaz de aprender adequadamente, resultando em sub ajuste.
+
+![Sub ajuste, exemplo](./assets/sub-ajuste.png)
 
