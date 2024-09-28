@@ -72,10 +72,44 @@ Tarefas mais importantes:
 ### Classificação: 
 A classificação é usada para prever ou descrever um rótulo baseado em dados categóricos. O algoritmo utiliza um atributo especial como a classe (o alvo a ser previsto). As classes são discretas, e o objetivo do modelo é atribuir novos dados a uma das classes.
 
-Exemplo: Prever se um cliente irá comprar ou não um produto com base em seu histórico de compras.
+**Exemplo**: Prever se um cliente irá comprar ou não um produto com base em seu histórico de compras.
 
 Um exemplo utilizando a técnica de classificação, seria esse abaixo com um modelo simples, para classificar a probabilidade de um email ser ou não ser spam:
 
 ![Classificação Spam](./assets/Modelo-Classificação-Spam.png)
 
 Como nós medimos o desempenho do modelo? Os modelos necessitam de métricas para medições pois são desenvolvidos por diferentes parametrizações e diferentes técnicas de algoritmos, naturalmente algum mais eficaz que outros para determinados contextos.
+
+Nós iremos dividir os dados em dois ou três subconjuntos, treinando o modelo com alguns dados específicos e validando com outros de mesma característica:
+- **Conjunto de Dados de Treino**: Parte dos dados designada para a criação do modelo.
+- **Conjunto de Dados de Validação**: Dados que serão necessários para ajustar ou melhorar o modelo já desenvolvido pelo conjunto de dados de treino.
+- **Conjunto de Dados de Teste**: Conjunto de dados utilizado para melhorar a performance do modelo já desenvolvido e parcialmente validado.
+
+Existem algumas técnicas de separação dos dados para realização de treino e de teste, como mostra na figura a seguir:
+
+![Separação dos dados para realização de treino e de teste](./assets/separacao-dados.png)
+
+Técnica do **Hold-Out** os dados são divididos em treino e teste, sendo para treino os dados históricos e com uma proporção maior. 
+Para teste, o restante dos dados históricos para mapear e ter uma boa consolidação do modelo. A partir desses dados de teste, o modelo fará uma nova predição, pode ser que seja a mesma ou uma diferente, e aí obteremos a avaliação de desempenho do modelo desenvolvido. Pode haver erros durante a avaliação de desempenho obviamente, por isso a previsão é feita antes de utilizar essa avaliação.
+
+**Validação Cruzada** utilizando essa ténica, cada registro é usado n vezes para treinamento e uma única vez para testes.
+Se eu tenho 10 subconjuntos, 9 seria para treino e outro para teste, assim o que é de treino vai para teste e o que é de teste vai para treino.
+
+#### Generalização X Super Ajuste X Sub Ajuste
+
+O objetivo ao criar um modelo de aprendizado de máquina é alcançar um **modelo genérico**, ou seja, um modelo que tenha **performance semelhante** tanto em um ambiente de desenvolvimento (durante os testes com os dados de treino) quanto em um ambiente de produção (quando for aplicado em dados reais que o modelo nunca viu).
+
+- **Generalização**: A **generalização** ocorre quando o modelo consegue aprender os padrões presentes nos dados de treinamento e aplicá-los corretamente em novos dados, mantendo um bom desempenho em ambos os ambientes (teste e produção). Um modelo bem generalizado é robusto e consistente
+<br>
+
+- **Super Ajuste (Overfitting)**: O super ajuste acontece quando o modelo se torna **altamente especializado** nos dados de treino, capturando até mesmo os ruídos ou peculiaridades específicas desses dados. Isso faz com que o modelo tenha um desempenho excelente nos dados de treino, mas quando é testado com novos dados (em produção), ele apresenta um desempenho ruim, já que não consegue se adaptar às variações dos novos dados.
+Causas do super ajuste:
+    - Tamanho insificiente do conjunto de dados.
+    - Complexidade excessiva do modelo de treinamento (os simples trazem os melhores resultados, algoritmos, modelos).
+    - Ruído nos dados de treinamento (valores incorreto, erros na medição).
+    - Seleção inadequada de atributos (excesso).
+    - Falta da validação cruzada (divisão dos dados).
+    Na imagem abaixo, a linha preta demonstra um exemplo de **generalização**, onde o modelo tem um desempenho consistente tanto nos dados de treino quanto nos dados de produção. Já a linha verde ilustra um exemplo de **super ajuste (overfitting)**, onde o modelo se ajusta muito bem aos dados de treino, mas não consegue manter a mesma performance com novos dados.
+
+![Super Ajuste exemplo](./assets/super-ajuste.png)
+
