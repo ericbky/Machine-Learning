@@ -152,3 +152,83 @@ Embora a acurácia seja uma métrica importante, ela pode ser **enganosa em conj
 Por isso, é recomendável utilizar a acurácia em conjunto com outras métricas, como **precisão**, **recall** e **F1-score**, especialmente em situações de classes desbalanceadas.
 
 ![Exemplo, acurácia](./assets/acuracia.png)
+
+## Métricas de erros para regressão
+
+Quando estamos lidando com **modelos de regressão**, o objetivo é prever um **valor numérico** em vez de uma classe categórica. Avaliar o desempenho desses modelos exige o uso de **métricas de erros específicas para regressão**, que comparam as previsões numéricas geradas pelo modelo com os valores reais esperados.
+
+Essas métricas de erro medem a diferença entre os valores previstos e os reais, fornecendo insights sobre a precisão do modelo e identificando áreas em que ele pode estar cometendo erros. Essas métricas são aplicáveis a uma variedade de cenários, como:
+
+- **Regressão Clássica**: Modelos tradicionais de regressão linear, polinomial, etc.
+- **Regressão em Machine Learning**: Modelos mais complexos, como regressão por árvores de decisão, redes neurais, entre outros.
+- **Séries Temporais**: Modelos que fazem previsões ao longo do tempo, onde é importante prever valores contínuos, como preços de ações, previsões de demanda, etc.
+
+### Principais métricas de erro para regressão:
+
+1. **Mean Absolute Error (MAE)** – Erro Absoluto Médio:
+   - O **MAE** calcula a média dos valores absolutos das diferenças entre as previsões e os valores reais. Em outras palavras, ele mostra o quanto, em média, o valor previsto está distante do valor real.
+   - Fórmula: 
+     \[
+     MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+     \]
+     Onde:
+     - \(y_i\) são os valores reais.
+     - \(\hat{y}_i\) são os valores previstos.
+     - \(n\) é o número de amostras.
+   - **Vantagem**: É fácil de interpretar e não é muito sensível a outliers, já que apenas calcula a magnitude do erro sem considerá-lo quadrado.
+   - **Desvantagem**: Não diferencia grandes e pequenos erros.
+
+2. **Mean Squared Error (MSE)** – Erro Quadrático Médio:
+   - O **MSE** calcula a média dos quadrados das diferenças entre os valores reais e previstos. Diferente do MAE, ele penaliza erros maiores de forma mais significativa, uma vez que os erros são elevados ao quadrado.
+   - Fórmula: 
+     \[
+     MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+     \]
+   - **Vantagem**: Penaliza grandes erros de forma mais severa, sendo útil quando erros grandes são indesejáveis.
+   - **Desvantagem**: Por elevar ao quadrado, pode exagerar a influência de outliers no erro total.
+
+3. **Root Mean Squared Error (RMSE)** – Raiz do Erro Quadrático Médio:
+   - O **RMSE** é a raiz quadrada do **MSE**. Ele traz o erro para a mesma escala dos valores reais, o que facilita a interpretação, especialmente quando os valores previstos são de uma escala grande.
+   - Fórmula: 
+     \[
+     RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+     \]
+   - **Vantagem**: Fornece um valor mais interpretável por estar na mesma unidade dos dados originais.
+   - **Desvantagem**: Assim como o MSE, é sensível a outliers.
+
+4. **R² (Coeficiente de Determinação)**:
+   - O **R²** mede a proporção da variação nos valores reais que é explicada pelas previsões do modelo. Ele varia de 0 a 1, onde 1 significa que o modelo explica toda a variabilidade dos dados, e 0 significa que ele não explica nada.
+   - Fórmula: 
+     \[
+     R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+     \]
+     Onde \(\bar{y}\) é a média dos valores reais.
+   - **Vantagem**: Fornece uma boa visão geral da qualidade do ajuste do modelo.
+   - **Desvantagem**: Pode ser enganoso em modelos com muitos parâmetros ou com dados desbalanceados.
+
+5. **Mean Absolute Percentage Error (MAPE)** – Erro Absoluto Percentual Médio:
+   - O **MAPE** calcula o erro absoluto como uma porcentagem do valor real. Ele mostra o erro em termos percentuais, facilitando a comparação entre diferentes conjuntos de dados ou escalas.
+   - Fórmula: 
+     \[
+     MAPE = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100
+     \]
+   - **Vantagem**: Fornece uma métrica de erro relativa, útil para comparação entre conjuntos de dados de diferentes escalas.
+   - **Desvantagem**: Não funciona bem quando há valores próximos de zero, pois gera valores muito altos ou indefinidos.
+
+---
+
+### Aplicações das métricas:
+
+1. **Regressão Clássica**:
+   - Ao usar modelos tradicionais, como a **Regressão Linear**, **MSE** e **R²** são comumente usados para avaliar o ajuste do modelo aos dados.
+   - **MAE** é útil quando se deseja avaliar o erro médio absoluto em unidades reais.
+  
+2. **Regressão em Machine Learning**:
+   - Em **modelos de Machine Learning**, como árvores de decisão, redes neurais, ou regressão polinomial, o **RMSE** é muitas vezes utilizado, pois facilita a comparação dos erros em termos da escala dos dados.
+   - **R²** é frequentemente usado para comparar a explicabilidade dos diferentes modelos.
+
+3. **Séries Temporais**:
+   - Em **previsões de séries temporais**, métricas como **MAPE** são preferidas, pois permitem interpretar o erro em termos percentuais. Isso ajuda a entender o desempenho em diferentes escalas temporais.
+   - O **RMSE** também é usado, especialmente quando se trata de prever valores contínuos como vendas, temperatura ou estoque.
+
+---
