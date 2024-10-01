@@ -122,3 +122,33 @@ Causas do sub ajuste:
 
 ![Sub ajuste, exemplo](./assets/sub-ajuste.png)
 
+## Exemplos de métricas utilizadas para medir os modelos 
+
+**Acuráricia**: A acurácia é uma métrica simples e direta, usada para medir o desempenho de um modelo de classificação. Ela representa a **proporção de previsões corretas** feitas pelo modelo em relação ao total de previsões. Ou seja, a acurácia indica o percentual de instâncias que foram corretamente classificadas.
+
+Ela é calculada pela fórmula:
+
+\[
+\text{Acurácia} = \frac{\text{Previsões Corretas}}{\text{Total de Previsões}} = \frac{VP + VN}{VP + VN + FP + FN}
+\]
+
+Onde:
+- **VP (Verdadeiros Positivos)**: Instâncias corretamente classificadas como positivas.
+- **VN (Verdadeiros Negativos)**: Instâncias corretamente classificadas como negativas.
+- **FP (Falsos Positivos)**: Instâncias incorretamente classificadas como positivas.
+- **FN (Falsos Negativos)**: Instâncias incorretamente classificadas como negativas.
+
+### Exemplo prático:
+Se você está construindo um modelo para classificar se um e-mail é **spam** ou **não spam**, a acurácia seria a porcentagem de e-mails corretamente classificados (tanto os que são spam quanto os que não são).
+
+- Se seu modelo classificou 100 e-mails, e 90 foram classificados corretamente, sua acurácia será:
+  \[
+  \text{Acurácia} = \frac{90}{100} = 90\%
+  \]
+
+### Limitações:
+Embora a acurácia seja uma métrica importante, ela pode ser **enganosa em conjuntos de dados desbalanceados**. Por exemplo, se 95% dos e-mails em um dataset não forem spam, um modelo que classifique todos os e-mails como "não spam" teria uma alta acurácia (95%), mas seria ineficiente para detectar e-mails de spam.
+
+Por isso, é recomendável utilizar a acurácia em conjunto com outras métricas, como **precisão**, **recall** e **F1-score**, especialmente em situações de classes desbalanceadas.
+
+![Exemplo, acurácia](./assets/acuracia.png)
